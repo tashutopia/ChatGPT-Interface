@@ -1,7 +1,5 @@
 # ChatGPT-Interface
 
-Steps:
-
 check versions:
 
 - run `node -v`
