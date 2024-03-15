@@ -1,7 +1,19 @@
 import './normal.css'
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+
+  const [input, setInput] = useState("");
+  const [chatLog, setChatLog] = useState([]);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    console.log(input);
+    setChatLog([...chatLog, {user: "me", message: `${input}`}]);
+    setInput("");
+  }
+
   return (
     <div className="App">
       <aside className="sidemenu">
@@ -44,9 +56,15 @@ function App() {
           </div>
         </div>
         <div className="chat-input-holder">
-          <textarea 
-          rows="1"
-          className="chat-input-textarea" placeholder=""></textarea>
+          <form onSubmit={handleSubmit}>
+            <input 
+              rows="1"
+              value={input}
+              // onChange={() => setInput(input) = e.target.value}
+              onChange={(e) => setInput(e.target.value)}
+              className="chat-input-textarea">
+            </input>
+          </form>
         </div>
       </section>
     </div>
